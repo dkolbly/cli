@@ -19,7 +19,11 @@ func (e *ErrMissingRequired) Error() string {
 		fmt.Fprintf(buf, "Flags ")
 		for i, name := range e.flags {
 			if i > 0 {
-				fmt.Fprintf(buf, ", ")
+				if len(e.flags) > 2 {
+					fmt.Fprintf(buf, ", ")
+				} else {
+					fmt.Fprintf(buf, " ")
+				}
 			}
 			if i == len(e.flags)-1 {
 				fmt.Fprintf(buf, "and ")

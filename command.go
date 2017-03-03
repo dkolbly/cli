@@ -114,6 +114,12 @@ func (c *Command) Run(ctx *Context) (err error) {
 		return nil
 	}
 
+	err = checkCommandMissingRequiredFlags(context, c)
+	if err != nil {
+		HandleExitCoder(err)
+		return err
+	}
+
 	if c.After != nil {
 		defer func() {
 			afterErr := c.After(context)
@@ -140,6 +146,7 @@ func (c *Command) Run(ctx *Context) (err error) {
 	}
 
 	context.Command = c
+
 	err = c.Action(context)
 
 	if err != nil {

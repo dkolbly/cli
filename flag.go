@@ -88,6 +88,13 @@ type Flag interface {
 	Names() []string
 }
 
+// IsRequirable is a common interface for flags that might
+// be required.  This is a separate interface from Flag so that
+// it can be an optional interface on Flag
+type IsRequirable interface {
+	IsRequired() bool
+}
+
 func flagSet(name string, flags []Flag) *flag.FlagSet {
 	set := flag.NewFlagSet(name, flag.ContinueOnError)
 

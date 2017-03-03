@@ -17,6 +17,7 @@ type BoolFlag struct {
 	Hidden      bool
 	Value       bool
 	DefaultText string
+	Required    bool
 	Destination *bool
 }
 
@@ -29,6 +30,12 @@ func (f *BoolFlag) String() string {
 // Names returns the names of the flag
 func (f *BoolFlag) Names() []string {
 	return flagNames(f)
+}
+
+// IsRequired implements IsRequirable.  Returns true if the flag
+// is required.
+func (f *BoolFlag) IsRequired() bool {
+	return f.Required
 }
 
 // Bool looks up the value of a local BoolFlag, returns
@@ -61,6 +68,7 @@ type DurationFlag struct {
 	Hidden      bool
 	Value       time.Duration
 	DefaultText string
+	Required    bool
 	Destination *time.Duration
 }
 
@@ -73,6 +81,12 @@ func (f *DurationFlag) String() string {
 // Names returns the names of the flag
 func (f *DurationFlag) Names() []string {
 	return flagNames(f)
+}
+
+// IsRequired implements IsRequirable.  Returns true if the flag
+// is required.
+func (f *DurationFlag) IsRequired() bool {
+	return f.Required
 }
 
 // Duration looks up the value of a local DurationFlag, returns
@@ -105,6 +119,7 @@ type Float64Flag struct {
 	Hidden      bool
 	Value       float64
 	DefaultText string
+	Required    bool
 	Destination *float64
 }
 
@@ -117,6 +132,12 @@ func (f *Float64Flag) String() string {
 // Names returns the names of the flag
 func (f *Float64Flag) Names() []string {
 	return flagNames(f)
+}
+
+// IsRequired implements IsRequirable.  Returns true if the flag
+// is required.
+func (f *Float64Flag) IsRequired() bool {
+	return f.Required
 }
 
 // Float64 looks up the value of a local Float64Flag, returns
@@ -149,6 +170,7 @@ type GenericFlag struct {
 	Hidden      bool
 	Value       Generic
 	DefaultText string
+	Required    bool
 }
 
 // String returns a readable representation of this value
@@ -160,6 +182,12 @@ func (f *GenericFlag) String() string {
 // Names returns the names of the flag
 func (f *GenericFlag) Names() []string {
 	return flagNames(f)
+}
+
+// IsRequired implements IsRequirable.  Returns true if the flag
+// is required.
+func (f *GenericFlag) IsRequired() bool {
+	return f.Required
 }
 
 // Generic looks up the value of a local GenericFlag, returns
@@ -192,6 +220,7 @@ type Int64Flag struct {
 	Hidden      bool
 	Value       int64
 	DefaultText string
+	Required    bool
 	Destination *int64
 }
 
@@ -204,6 +233,12 @@ func (f *Int64Flag) String() string {
 // Names returns the names of the flag
 func (f *Int64Flag) Names() []string {
 	return flagNames(f)
+}
+
+// IsRequired implements IsRequirable.  Returns true if the flag
+// is required.
+func (f *Int64Flag) IsRequired() bool {
+	return f.Required
 }
 
 // Int64 looks up the value of a local Int64Flag, returns
@@ -236,6 +271,7 @@ type IntFlag struct {
 	Hidden      bool
 	Value       int
 	DefaultText string
+	Required    bool
 	Destination *int
 }
 
@@ -248,6 +284,12 @@ func (f *IntFlag) String() string {
 // Names returns the names of the flag
 func (f *IntFlag) Names() []string {
 	return flagNames(f)
+}
+
+// IsRequired implements IsRequirable.  Returns true if the flag
+// is required.
+func (f *IntFlag) IsRequired() bool {
+	return f.Required
 }
 
 // Int looks up the value of a local IntFlag, returns
@@ -280,6 +322,7 @@ type IntSliceFlag struct {
 	Hidden      bool
 	Value       *IntSlice
 	DefaultText string
+	Required    bool
 }
 
 // String returns a readable representation of this value
@@ -291,6 +334,12 @@ func (f *IntSliceFlag) String() string {
 // Names returns the names of the flag
 func (f *IntSliceFlag) Names() []string {
 	return flagNames(f)
+}
+
+// IsRequired implements IsRequirable.  Returns true if the flag
+// is required.
+func (f *IntSliceFlag) IsRequired() bool {
+	return f.Required
 }
 
 // IntSlice looks up the value of a local IntSliceFlag, returns
@@ -323,6 +372,7 @@ type Int64SliceFlag struct {
 	Hidden      bool
 	Value       *Int64Slice
 	DefaultText string
+	Required    bool
 }
 
 // String returns a readable representation of this value
@@ -334,6 +384,12 @@ func (f *Int64SliceFlag) String() string {
 // Names returns the names of the flag
 func (f *Int64SliceFlag) Names() []string {
 	return flagNames(f)
+}
+
+// IsRequired implements IsRequirable.  Returns true if the flag
+// is required.
+func (f *Int64SliceFlag) IsRequired() bool {
+	return f.Required
 }
 
 // Int64Slice looks up the value of a local Int64SliceFlag, returns
@@ -366,6 +422,7 @@ type Float64SliceFlag struct {
 	Hidden      bool
 	Value       *Float64Slice
 	DefaultText string
+	Required    bool
 }
 
 // String returns a readable representation of this value
@@ -377,6 +434,12 @@ func (f *Float64SliceFlag) String() string {
 // Names returns the names of the flag
 func (f *Float64SliceFlag) Names() []string {
 	return flagNames(f)
+}
+
+// IsRequired implements IsRequirable.  Returns true if the flag
+// is required.
+func (f *Float64SliceFlag) IsRequired() bool {
+	return f.Required
 }
 
 // Float64Slice looks up the value of a local Float64SliceFlag, returns
@@ -409,6 +472,7 @@ type StringFlag struct {
 	Hidden      bool
 	Value       string
 	DefaultText string
+	Required    bool
 	Destination *string
 }
 
@@ -421,6 +485,12 @@ func (f *StringFlag) String() string {
 // Names returns the names of the flag
 func (f *StringFlag) Names() []string {
 	return flagNames(f)
+}
+
+// IsRequired implements IsRequirable.  Returns true if the flag
+// is required.
+func (f *StringFlag) IsRequired() bool {
+	return f.Required
 }
 
 // String looks up the value of a local StringFlag, returns
@@ -453,6 +523,7 @@ type StringSliceFlag struct {
 	Hidden      bool
 	Value       *StringSlice
 	DefaultText string
+	Required    bool
 }
 
 // String returns a readable representation of this value
@@ -464,6 +535,12 @@ func (f *StringSliceFlag) String() string {
 // Names returns the names of the flag
 func (f *StringSliceFlag) Names() []string {
 	return flagNames(f)
+}
+
+// IsRequired implements IsRequirable.  Returns true if the flag
+// is required.
+func (f *StringSliceFlag) IsRequired() bool {
+	return f.Required
 }
 
 // StringSlice looks up the value of a local StringSliceFlag, returns
@@ -496,6 +573,7 @@ type Uint64Flag struct {
 	Hidden      bool
 	Value       uint64
 	DefaultText string
+	Required    bool
 	Destination *uint64
 }
 
@@ -508,6 +586,12 @@ func (f *Uint64Flag) String() string {
 // Names returns the names of the flag
 func (f *Uint64Flag) Names() []string {
 	return flagNames(f)
+}
+
+// IsRequired implements IsRequirable.  Returns true if the flag
+// is required.
+func (f *Uint64Flag) IsRequired() bool {
+	return f.Required
 }
 
 // Uint64 looks up the value of a local Uint64Flag, returns
@@ -540,6 +624,7 @@ type UintFlag struct {
 	Hidden      bool
 	Value       uint
 	DefaultText string
+	Required    bool
 	Destination *uint
 }
 
@@ -552,6 +637,12 @@ func (f *UintFlag) String() string {
 // Names returns the names of the flag
 func (f *UintFlag) Names() []string {
 	return flagNames(f)
+}
+
+// IsRequired implements IsRequirable.  Returns true if the flag
+// is required.
+func (f *UintFlag) IsRequired() bool {
+	return f.Required
 }
 
 // Uint looks up the value of a local UintFlag, returns

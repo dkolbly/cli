@@ -240,6 +240,12 @@ func (a *App) Run(arguments []string) (err error) {
 		}
 	}
 
+	err = checkCommandMissingRequiredFlags(context, nil)
+	if err != nil {
+		HandleExitCoder(err)
+		return err
+	}
+
 	// Run default Action
 	err = a.Action(context)
 
@@ -350,6 +356,12 @@ func (a *App) RunAsSubcommand(ctx *Context) (err error) {
 		if c != nil {
 			return c.Run(context)
 		}
+	}
+
+	err = checkCommandMissingRequiredFlags(context, nil)
+	if err != nil {
+		HandleExitCoder(err)
+		return err
 	}
 
 	// Run default Action

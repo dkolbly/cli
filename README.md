@@ -1,21 +1,17 @@
 cli
 ===
 
-[![Build Status](https://travis-ci.org/urfave/cli.svg?branch=master)](https://travis-ci.org/urfave/cli)
-[![Windows Build Status](https://ci.appveyor.com/api/projects/status/rtgk5xufi932pb2v?svg=true)](https://ci.appveyor.com/project/urfave/cli)
-[![GoDoc](https://godoc.org/github.com/urfave/cli?status.svg)](https://godoc.org/github.com/urfave/cli)
-[![codebeat](https://codebeat.co/badges/0a8f30aa-f975-404b-b878-5fab3ae1cc5f)](https://codebeat.co/projects/github-com-urfave-cli)
-[![Go Report Card](https://goreportcard.com/badge/urfave/cli)](https://goreportcard.com/report/urfave/cli)
-[![top level coverage](https://gocover.io/_badge/github.com/urfave/cli?0 "top level coverage")](http://gocover.io/github.com/urfave/cli) /
-[![altsrc coverage](https://gocover.io/_badge/github.com/urfave/cli/altsrc?0 "altsrc coverage")](http://gocover.io/github.com/urfave/cli/altsrc)
+[![GoDoc](https://godoc.org/github.com/dkolbly/cli?status.svg)](https://godoc.org/github.com/dkolbly/cli)
 
-**Notice:** This is the library formerly known as
-`github.com/codegangsta/cli` -- Github will automatically redirect requests
-to this repository, but we recommend updating your references for clarity.
+**Notice:** This is a fork of the **v2** branch of the awesome library
+`github.com/urfave/cli` that adds support for convenient "required"
+flags (c.f. [#85](https://github.com/urfave/cli/issues/85).  Note that
+the v2 branch is considered fairly unstable, and this fork will be
+tracking the upstream branch to the extent possible.
 
-cli is a simple, fast, and fun package for building command line apps in Go. The
-goal is to enable developers to write fast and distributable command line
-applications in an expressive way.
+cli is a simple, fast, and fun package for building command line apps
+in Go. The goal is to enable developers to write fast and
+distributable command line applications in an expressive way.
 
 <!-- toc -->
 
@@ -34,6 +30,7 @@ applications in an expressive way.
     + [Values from the Environment](#values-from-the-environment)
     + [Values from alternate input sources (YAML, TOML, and others)](#values-from-alternate-input-sources-yaml-toml-and-others)
     + [Default Values for help output](#default-values-for-help-output)
+    + [Required Flags](#required-flags)
   * [Subcommands](#subcommands)
   * [Subcommands categories](#subcommands-categories)
   * [Exit code](#exit-code)
@@ -67,7 +64,7 @@ the install instructions for Go](http://golang.org/doc/install.html).
 
 To install cli, simply run:
 ```
-$ go get github.com/urfave/cli
+$ go get github.com/dkolbly/cli
 ```
 
 Make sure your `PATH` includes the `$GOPATH/bin` directory so your commands can
@@ -82,52 +79,6 @@ cli is tested against multiple versions of Go on Linux, and against the latest
 released version of Go on OS X and Windows.  For full details, see
 [`./.travis.yml`](./.travis.yml) and [`./appveyor.yml`](./appveyor.yml).
 
-### Using the `v2` branch
-
-**Warning**: The `v2` branch is currently unreleased and considered unstable.
-
-There is currently a long-lived branch named `v2` that is intended to land as
-the new `master` branch once development there has settled down.  The current
-`master` branch (mirrored as `v1`) is being manually merged into `v2` on
-an irregular human-based schedule, but generally if one wants to "upgrade" to
-`v2` *now* and accept the volatility (read: "awesomeness") that comes along with
-that, please use whatever version pinning of your preference, such as via
-`gopkg.in`:
-
-```
-$ go get gopkg.in/urfave/cli.v2
-```
-
-``` go
-...
-import (
-  "gopkg.in/urfave/cli.v2" // imports as package "cli"
-)
-...
-```
-
-**NOTE**: There is a [migrator (python) script](./cli-v1-to-v2) available to aid
-with the transition from the v1 to v2 API.
-
-### Pinning to the `v1` releases
-
-Similarly to the section above describing use of the `v2` branch, if one wants
-to avoid any unexpected compatibility pains once `v2` becomes `master`, then
-pinning to `v1` is an acceptable option, e.g.:
-
-```
-$ go get gopkg.in/urfave/cli.v1
-```
-
-``` go
-...
-import (
-  "gopkg.in/urfave/cli.v1" // imports as package "cli"
-)
-...
-```
-
-This will pull the latest tagged `v1` release (e.g. `v1.18.1` at the time of writing).
 
 ## Getting Started
 
@@ -144,7 +95,7 @@ package main
 import (
   "os"
 
-  "gopkg.in/urfave/cli.v2"
+  "github.com/dkolbly/cli"
 )
 
 func main() {
@@ -165,7 +116,7 @@ import (
   "fmt"
   "os"
 
-  "gopkg.in/urfave/cli.v2"
+  "github.com/dkolbly/cli"
 )
 
 func main() {
@@ -204,7 +155,7 @@ import (
   "fmt"
   "os"
 
-  "gopkg.in/urfave/cli.v2"
+  "github.com/dkolbly/cli"
 )
 
 func main() {
@@ -268,7 +219,7 @@ import (
   "fmt"
   "os"
 
-  "gopkg.in/urfave/cli.v2"
+  "github.com/dkolbly/cli"
 )
 
 func main() {
@@ -297,7 +248,7 @@ import (
   "fmt"
   "os"
 
-  "gopkg.in/urfave/cli.v2"
+  "github.com/dkolbly/cli"
 )
 
 func main() {
@@ -340,7 +291,7 @@ import (
   "os"
   "fmt"
 
-  "gopkg.in/urfave/cli.v2"
+  "github.com/dkolbly/cli"
 )
 
 func main() {
@@ -373,7 +324,7 @@ func main() {
 }
 ```
 
-See full list of flags at http://godoc.org/github.com/urfave/cli
+See full list of flags at http://godoc.org/github.com/dkolbly/cli
 
 #### Placeholder Values
 
@@ -392,7 +343,7 @@ package main
 import (
   "os"
 
-  "gopkg.in/urfave/cli.v2"
+  "github.com/dkolbly/cli"
 )
 
 func main() {
@@ -434,7 +385,7 @@ package main
 import (
   "os"
 
-  "gopkg.in/urfave/cli.v2"
+  "github.com/dkolbly/cli"
 )
 
 func main() {
@@ -476,7 +427,7 @@ import (
   "os"
   "sort"
 
-  "github.com/urfave/cli"
+  "github.com/dkolbly/cli"
 )
 
 func main() {
@@ -521,7 +472,7 @@ package main
 import (
   "os"
 
-  "gopkg.in/urfave/cli.v2"
+  "github.com/dkolbly/cli"
 )
 
 func main() {
@@ -554,7 +505,7 @@ package main
 import (
   "os"
 
-  "gopkg.in/urfave/cli.v2"
+  "github.com/dkolbly/cli"
 )
 
 func main() {
@@ -620,8 +571,8 @@ import (
   "fmt"
   "os"
 
-  "gopkg.in/urfave/cli.v2"
-  "gopkg.in/urfave/cli.v2/altsrc"
+  "github.com/dkolbly/cli"
+  "github.com/dkolbly/cli/altsrc"
 )
 
 func main() {
@@ -645,7 +596,10 @@ func main() {
 
 #### Default Values for help output
 
-Sometimes it's useful to specify a flag's default help-text value within the flag declaration. This can be useful if the default value for a flag is a computed value. The default value can be set via the `DefaultText` struct field.
+Sometimes it's useful to specify a flag's default help-text value
+within the flag declaration. This can be useful if the default value
+for a flag is a computed value. The default value can be set via the
+`DefaultText` struct field.
 
 For example this:
 
@@ -659,7 +613,7 @@ package main
 import (
   "os"
 
-  "gopkg.in/urfave/cli.v2"
+  "github.com/dkolbly/cli"
 )
 
 func main() {
@@ -684,6 +638,39 @@ Will result in help output like:
 --port value  Use a randomized port (default: random)
 ```
 
+#### Required Flags
+
+A common use case is requiring that particular flags be present.  You
+can probably provide more application-specific error messages if you
+check for the flags' presence in application code, but this is such a
+common use case that all of the standard `cli.Flag` providers support
+a Required attribute which, if supplied, will cause the cli parser to
+report a usage error if the flag is not supplied.
+
+```go
+package main
+
+import (
+  "os"
+
+  "github.com/dkolbly/cli"
+)
+
+func main() {
+  app := &cli.App{
+    Flags: []cli.Flag{
+      &cli.StringFlag{
+        Name:     "url",
+        Usage:    "The endpoint to hit",
+        Required: true,
+      },
+    },
+  }
+
+  app.Run(os.Args)
+}
+```
+
 
 ### Subcommands
 
@@ -700,7 +687,7 @@ import (
   "fmt"
   "os"
 
-  "gopkg.in/urfave/cli.v2"
+  "github.com/dkolbly/cli"
 )
 
 func main() {
@@ -768,7 +755,7 @@ package main
 import (
   "os"
 
-  "gopkg.in/urfave/cli.v2"
+  "github.com/dkolbly/cli"
 )
 
 func main() {
@@ -816,7 +803,7 @@ package main
 import (
   "os"
 
-  "gopkg.in/urfave/cli.v2"
+  "github.com/dkolbly/cli"
 )
 
 func main() {
@@ -858,7 +845,7 @@ import (
   "fmt"
   "os"
 
-  "gopkg.in/urfave/cli.v2"
+  "github.com/dkolbly/cli"
 )
 
 func main() {
@@ -938,7 +925,7 @@ package main
 import (
   "os"
 
-  "gopkg.in/urfave/cli.v2"
+  "github.com/dkolbly/cli"
 )
 
 func main() {
@@ -984,7 +971,7 @@ import (
   "io"
   "os"
 
-  "gopkg.in/urfave/cli.v2"
+  "github.com/dkolbly/cli"
 )
 
 func main() {
@@ -1044,7 +1031,7 @@ package main
 import (
   "os"
 
-  "gopkg.in/urfave/cli.v2"
+  "github.com/dkolbly/cli"
 )
 
 func main() {
@@ -1079,7 +1066,7 @@ package main
 import (
   "os"
 
-  "gopkg.in/urfave/cli.v2"
+  "github.com/dkolbly/cli"
 )
 
 func main() {
@@ -1109,7 +1096,7 @@ import (
   "fmt"
   "os"
 
-  "gopkg.in/urfave/cli.v2"
+  "github.com/dkolbly/cli"
 )
 
 var (
@@ -1149,7 +1136,7 @@ import (
   "os"
   "time"
 
-  "gopkg.in/urfave/cli.v2"
+  "github.com/dkolbly/cli"
 )
 
 func init() {

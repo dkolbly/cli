@@ -146,6 +146,7 @@ def _write_cli_flag_types(outfile, types):
             Hidden bool
             Value {type}
             DefaultText string
+            Required bool
         """.format(**typedef))
 
         if typedef['dest']:
@@ -165,6 +166,12 @@ def _write_cli_flag_types(outfile, types):
             // Names returns the names of the flag
             func (f *{name}Flag) Names() []string {{
                 return flagNames(f)
+            }}
+
+            // IsRequired implements IsRequirable.  Returns true if the flag
+            // is required.
+            func (f *{name}Flag) IsRequired() bool {{
+                return f.Required
             }}
 
             // {name} looks up the value of a local {name}Flag, returns

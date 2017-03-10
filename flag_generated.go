@@ -38,6 +38,13 @@ func (f *BoolFlag) IsRequired() bool {
 	return f.Required
 }
 
+// IsSetIn implements IsRequirable.  Returns true if the flag
+// is set in the given context.
+func (f *BoolFlag) IsSetIn(c *Context) bool {
+	flagName := f.Names()[0]
+	return c.IsSet(flagName) || isEnvVarSet(f.EnvVars)
+}
+
 // Bool looks up the value of a local BoolFlag, returns
 // false if not found
 func (c *Context) Bool(name string) bool {
@@ -87,6 +94,13 @@ func (f *DurationFlag) Names() []string {
 // is required.
 func (f *DurationFlag) IsRequired() bool {
 	return f.Required
+}
+
+// IsSetIn implements IsRequirable.  Returns true if the flag
+// is set in the given context.
+func (f *DurationFlag) IsSetIn(c *Context) bool {
+	flagName := f.Names()[0]
+	return c.IsSet(flagName) || isEnvVarSet(f.EnvVars)
 }
 
 // Duration looks up the value of a local DurationFlag, returns
@@ -140,6 +154,13 @@ func (f *Float64Flag) IsRequired() bool {
 	return f.Required
 }
 
+// IsSetIn implements IsRequirable.  Returns true if the flag
+// is set in the given context.
+func (f *Float64Flag) IsSetIn(c *Context) bool {
+	flagName := f.Names()[0]
+	return c.IsSet(flagName) || isEnvVarSet(f.EnvVars)
+}
+
 // Float64 looks up the value of a local Float64Flag, returns
 // 0 if not found
 func (c *Context) Float64(name string) float64 {
@@ -188,6 +209,13 @@ func (f *GenericFlag) Names() []string {
 // is required.
 func (f *GenericFlag) IsRequired() bool {
 	return f.Required
+}
+
+// IsSetIn implements IsRequirable.  Returns true if the flag
+// is set in the given context.
+func (f *GenericFlag) IsSetIn(c *Context) bool {
+	flagName := f.Names()[0]
+	return c.IsSet(flagName) || isEnvVarSet(f.EnvVars)
 }
 
 // Generic looks up the value of a local GenericFlag, returns
@@ -241,6 +269,13 @@ func (f *Int64Flag) IsRequired() bool {
 	return f.Required
 }
 
+// IsSetIn implements IsRequirable.  Returns true if the flag
+// is set in the given context.
+func (f *Int64Flag) IsSetIn(c *Context) bool {
+	flagName := f.Names()[0]
+	return c.IsSet(flagName) || isEnvVarSet(f.EnvVars)
+}
+
 // Int64 looks up the value of a local Int64Flag, returns
 // 0 if not found
 func (c *Context) Int64(name string) int64 {
@@ -290,6 +325,13 @@ func (f *IntFlag) Names() []string {
 // is required.
 func (f *IntFlag) IsRequired() bool {
 	return f.Required
+}
+
+// IsSetIn implements IsRequirable.  Returns true if the flag
+// is set in the given context.
+func (f *IntFlag) IsSetIn(c *Context) bool {
+	flagName := f.Names()[0]
+	return c.IsSet(flagName) || isEnvVarSet(f.EnvVars)
 }
 
 // Int looks up the value of a local IntFlag, returns
@@ -342,6 +384,13 @@ func (f *IntSliceFlag) IsRequired() bool {
 	return f.Required
 }
 
+// IsSetIn implements IsRequirable.  Returns true if the flag
+// is set in the given context.
+func (f *IntSliceFlag) IsSetIn(c *Context) bool {
+	flagName := f.Names()[0]
+	return c.IsSet(flagName) || isEnvVarSet(f.EnvVars)
+}
+
 // IntSlice looks up the value of a local IntSliceFlag, returns
 // nil if not found
 func (c *Context) IntSlice(name string) []int {
@@ -392,6 +441,13 @@ func (f *Int64SliceFlag) IsRequired() bool {
 	return f.Required
 }
 
+// IsSetIn implements IsRequirable.  Returns true if the flag
+// is set in the given context.
+func (f *Int64SliceFlag) IsSetIn(c *Context) bool {
+	flagName := f.Names()[0]
+	return c.IsSet(flagName) || isEnvVarSet(f.EnvVars)
+}
+
 // Int64Slice looks up the value of a local Int64SliceFlag, returns
 // nil if not found
 func (c *Context) Int64Slice(name string) []int64 {
@@ -440,6 +496,13 @@ func (f *Float64SliceFlag) Names() []string {
 // is required.
 func (f *Float64SliceFlag) IsRequired() bool {
 	return f.Required
+}
+
+// IsSetIn implements IsRequirable.  Returns true if the flag
+// is set in the given context.
+func (f *Float64SliceFlag) IsSetIn(c *Context) bool {
+	flagName := f.Names()[0]
+	return c.IsSet(flagName) || isEnvVarSet(f.EnvVars)
 }
 
 // Float64Slice looks up the value of a local Float64SliceFlag, returns
@@ -493,6 +556,13 @@ func (f *StringFlag) IsRequired() bool {
 	return f.Required
 }
 
+// IsSetIn implements IsRequirable.  Returns true if the flag
+// is set in the given context.
+func (f *StringFlag) IsSetIn(c *Context) bool {
+	flagName := f.Names()[0]
+	return c.IsSet(flagName) || isEnvVarSet(f.EnvVars)
+}
+
 // String looks up the value of a local StringFlag, returns
 // "" if not found
 func (c *Context) String(name string) string {
@@ -541,6 +611,13 @@ func (f *StringSliceFlag) Names() []string {
 // is required.
 func (f *StringSliceFlag) IsRequired() bool {
 	return f.Required
+}
+
+// IsSetIn implements IsRequirable.  Returns true if the flag
+// is set in the given context.
+func (f *StringSliceFlag) IsSetIn(c *Context) bool {
+	flagName := f.Names()[0]
+	return c.IsSet(flagName) || isEnvVarSet(f.EnvVars)
 }
 
 // StringSlice looks up the value of a local StringSliceFlag, returns
@@ -594,6 +671,13 @@ func (f *Uint64Flag) IsRequired() bool {
 	return f.Required
 }
 
+// IsSetIn implements IsRequirable.  Returns true if the flag
+// is set in the given context.
+func (f *Uint64Flag) IsSetIn(c *Context) bool {
+	flagName := f.Names()[0]
+	return c.IsSet(flagName) || isEnvVarSet(f.EnvVars)
+}
+
 // Uint64 looks up the value of a local Uint64Flag, returns
 // 0 if not found
 func (c *Context) Uint64(name string) uint64 {
@@ -643,6 +727,13 @@ func (f *UintFlag) Names() []string {
 // is required.
 func (f *UintFlag) IsRequired() bool {
 	return f.Required
+}
+
+// IsSetIn implements IsRequirable.  Returns true if the flag
+// is set in the given context.
+func (f *UintFlag) IsSetIn(c *Context) bool {
+	flagName := f.Names()[0]
+	return c.IsSet(flagName) || isEnvVarSet(f.EnvVars)
 }
 
 // Uint looks up the value of a local UintFlag, returns

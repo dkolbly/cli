@@ -93,6 +93,7 @@ type Flag interface {
 // it can be an optional interface on Flag
 type IsRequirable interface {
 	IsRequired() bool
+	IsSetIn(*Context) bool
 }
 
 func flagSet(name string, flags []Flag) *flag.FlagSet {

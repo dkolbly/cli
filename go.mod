@@ -1,1 +1,1 @@
-module github.com/dkolbly/cli
+module github.com/dkolbly/cli/v3

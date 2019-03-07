@@ -5,9 +5,8 @@ cli
 
 **Notice:** This is a fork of the **v2** branch of the awesome library
 `github.com/urfave/cli` that adds support for convenient "required"
-flags (c.f. [#85](https://github.com/urfave/cli/issues/85).  Note that
-the v2 branch is considered fairly unstable, and this fork will be
-tracking the upstream branch to the extent possible.
+flags (c.f. [#85](https://github.com/urfave/cli/issues/85).  This, the **v3**
+branch adds module support per the recommendations at https://github.com/golang/go/wiki/Modules#releasing-modules-v2-or-higher
 
 cli is a simple, fast, and fun package for building command line apps
 in Go. The goal is to enable developers to write fast and
@@ -64,7 +63,7 @@ the install instructions for Go](http://golang.org/doc/install.html).
 
 To install cli, simply run:
 ```
-$ go get github.com/dkolbly/cli
+$ go get github.com/dkolbly/cli/v3
 ```
 
 Make sure your `PATH` includes the `$GOPATH/bin` directory so your commands can
@@ -95,7 +94,7 @@ package main
 import (
   "os"
 
-  "github.com/dkolbly/cli"
+  "github.com/dkolbly/cli/v3"
 )
 
 func main() {
@@ -116,7 +115,7 @@ import (
   "fmt"
   "os"
 
-  "github.com/dkolbly/cli"
+  "github.com/dkolbly/cli/v3"
 )
 
 func main() {
@@ -155,7 +154,7 @@ import (
   "fmt"
   "os"
 
-  "github.com/dkolbly/cli"
+  "github.com/dkolbly/cli/v3"
 )
 
 func main() {
@@ -219,7 +218,7 @@ import (
   "fmt"
   "os"
 
-  "github.com/dkolbly/cli"
+  "github.com/dkolbly/cli/v3"
 )
 
 func main() {
@@ -248,7 +247,7 @@ import (
   "fmt"
   "os"
 
-  "github.com/dkolbly/cli"
+  "github.com/dkolbly/cli/v3"
 )
 
 func main() {
@@ -291,7 +290,7 @@ import (
   "os"
   "fmt"
 
-  "github.com/dkolbly/cli"
+  "github.com/dkolbly/cli/v3"
 )
 
 func main() {
@@ -324,7 +323,7 @@ func main() {
 }
 ```
 
-See full list of flags at http://godoc.org/github.com/dkolbly/cli
+See full list of flags at http://godoc.org/github.com/dkolbly/cli/v3
 
 #### Placeholder Values
 
@@ -343,7 +342,7 @@ package main
 import (
   "os"
 
-  "github.com/dkolbly/cli"
+  "github.com/dkolbly/cli/v3"
 )
 
 func main() {
@@ -385,7 +384,7 @@ package main
 import (
   "os"
 
-  "github.com/dkolbly/cli"
+  "github.com/dkolbly/cli/v3"
 )
 
 func main() {
@@ -427,7 +426,7 @@ import (
   "os"
   "sort"
 
-  "github.com/dkolbly/cli"
+  "github.com/dkolbly/cli/v3"
 )
 
 func main() {
@@ -472,7 +471,7 @@ package main
 import (
   "os"
 
-  "github.com/dkolbly/cli"
+  "github.com/dkolbly/cli/v3"
 )
 
 func main() {
@@ -505,7 +504,7 @@ package main
 import (
   "os"
 
-  "github.com/dkolbly/cli"
+  "github.com/dkolbly/cli/v3"
 )
 
 func main() {
@@ -571,8 +570,8 @@ import (
   "fmt"
   "os"
 
-  "github.com/dkolbly/cli"
-  "github.com/dkolbly/cli/altsrc"
+  "github.com/dkolbly/cli/v3"
+  "github.com/dkolbly/cli/v3/altsrc"
 )
 
 func main() {
@@ -613,7 +612,7 @@ package main
 import (
   "os"
 
-  "github.com/dkolbly/cli"
+  "github.com/dkolbly/cli/v3"
 )
 
 func main() {
@@ -653,7 +652,7 @@ package main
 import (
   "os"
 
-  "github.com/dkolbly/cli"
+  "github.com/dkolbly/cli/v3"
 )
 
 func main() {
@@ -687,7 +686,7 @@ import (
   "fmt"
   "os"
 
-  "github.com/dkolbly/cli"
+  "github.com/dkolbly/cli/v3"
 )
 
 func main() {
@@ -755,7 +754,7 @@ package main
 import (
   "os"
 
-  "github.com/dkolbly/cli"
+  "github.com/dkolbly/cli/v3"
 )
 
 func main() {
@@ -803,7 +802,7 @@ package main
 import (
   "os"
 
-  "github.com/dkolbly/cli"
+  "github.com/dkolbly/cli/v3"
 )
 
 func main() {
@@ -845,7 +844,7 @@ import (
   "fmt"
   "os"
 
-  "github.com/dkolbly/cli"
+  "github.com/dkolbly/cli/v3"
 )
 
 func main() {
@@ -925,7 +924,7 @@ package main
 import (
   "os"
 
-  "github.com/dkolbly/cli"
+  "github.com/dkolbly/cli/v3"
 )
 
 func main() {
@@ -971,7 +970,7 @@ import (
   "io"
   "os"
 
-  "github.com/dkolbly/cli"
+  "github.com/dkolbly/cli/v3"
 )
 
 func main() {
@@ -1031,7 +1030,7 @@ package main
 import (
   "os"
 
-  "github.com/dkolbly/cli"
+  "github.com/dkolbly/cli/v3"
 )
 
 func main() {
@@ -1066,7 +1065,7 @@ package main
 import (
   "os"
 
-  "github.com/dkolbly/cli"
+  "github.com/dkolbly/cli/v3"
 )
 
 func main() {
@@ -1096,7 +1095,7 @@ import (
   "fmt"
   "os"
 
-  "github.com/dkolbly/cli"
+  "github.com/dkolbly/cli/v3"
 )
 
 var (
@@ -1136,7 +1135,7 @@ import (
   "os"
   "time"
 
-  "github.com/dkolbly/cli"
+  "github.com/dkolbly/cli/v3"
 )
 
 func init() {
